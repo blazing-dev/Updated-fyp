@@ -1,0 +1,145 @@
+{% extends 'footcount/basic.html' %}
+{% block title%}Dashboard |Home{% endblock %}
+{% block login %}
+<ul class="nav navbar-nav">
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My profile <span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      <li><a href="/"><i class="fa fa-sign-out"></i> Log out</a></li>
+    </ul>
+  </li>
+</ul>
+{% endblock %}
+{% block body %}
+      <div class="welcome">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="content">
+                <h2>Welcome to Dashboard</h2>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="statistics">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="box">
+                <i class="fa fa-eye fa-fw"></i>
+                <div class="info">
+                  <h3>Live View</h3> <span></span>
+                  <p>Camera Live view</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="box">
+                <i class="fa fa-users fa-fw"></i>
+                <div class="info">
+                  <h3>Foot Count</h3> <span></span>
+                  <p>Foot Trafic Counter</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="box">
+                <i class="fa fa-line-chart"></i>
+                <div class="info">
+                  <h3>Forecasting</h3> <span></span>
+                  <p>Future data Forecasting</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="welcome">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="content">
+                  <center><h2>Live Streaming</h2></center>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <section class="charts">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="chart-container">
+                    <h3>Entry Point</h3>
+    <!--                <canvas class="box1" id="myChart"></canvas>-->
+                    <img src="{% url 'live' stream_path='video' %} "height="325" width="440" class="box1"/>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="chart-container">
+                    <h3>Exit Point</h3>
+                    <img src="{% url 'live' stream_path='video' %} "height="325" width="440" class="box1"/>
+    <!--                <canvas class="box1" id="myChart2"></canvas>-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- ######## -->
+          <div class="welcome">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="content">
+                    <center><h2>Congestion Rate In Past 6 days</h2></center>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <section class='statis text-center'>
+                  <div class="container-fluid">
+                    <div class="row">
+                      {% for i, j in y %}
+                        <div class="col-md-2">
+                        <div class="box bg-primary">
+                            <i class="fa fa-male"></i>
+                          <h3>{{i}}</h3>
+                          <p class="lead">{{j}}</p>
+                        </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </section>
+          <!-- ######## -->
+          <div class="welcome">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="content">
+                      <center><h2>Footcount Statistics Charts</h2></center>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- abc -->
+            <section class="charts">
+              <div class="container-fluid">
+                  <div class="row">
+                      <div class="col-md-12">
+                        <div class="chart-container">
+                          <h3><span style="color: blue;">Actual Data</span><span style="color: white;"> And </span><span style="color: orange;">Forecasted Data</span></h3>
+                          <img src="data:image/png;base64,{{x}}" style="width: 100%; height: 45%;">
+                        </div>
+                      </div>
+                  </div>
+              </div>
+            </section>
+              <!-- abc -->
+              
+              
+        {% endblock %}
+     

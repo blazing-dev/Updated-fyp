@@ -1,0 +1,30 @@
+{% extends 'footcount/basic.html' %}
+{% block title%}Dashboard |forecast{% endblock %}
+{% block body %}
+<center><h1 style="color: white;">forecast</h1></center>
+<section class="ch">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+          <center><h5><span style="color: blue;">Actual Data</span><span style="color: white;"> And </span><span style="color: orange;">Forecasted Data</span></h5></center>
+        <div class="ch-container" style="height: 450px;">
+            <img src="data:image/png;base64,{{data}}" height="450" width="930" class="box1 image-fluid" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<p style="color: orange; text-align: center; font-size: 25px;"><i>FORECASTED VALUES FOR UPCOMING MONTHS</i></p>
+  
+  <center>
+      <table class="tbl" border="1">
+          <th class="header">Date</th><th class="header">Forecasted Data</th>
+          {% for value, month in values %}
+          <tr class="table_rows">
+            <td>{{value}}</td>
+            <td>{{month}}</td>
+          </tr>>
+          {% endfor %}
+        </table>
+  </center>
+{% endblock %}
