@@ -595,7 +595,7 @@ def visitors_reg(request):
             vis_id = form.cleaned_data['vis_id']
             form.save()
             messages.success(request, "Visitor Registered Successfully")
-            return HttpResponseRedirect('/visitors_reg/')
+            return HttpResponseRedirect('/visitors_reg')
     else:
         form = Visitors_form()
 

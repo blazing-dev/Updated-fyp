@@ -9,6 +9,20 @@
         <label class="col-md-2 control-label" style="color:orange;">Visitor ID</label>
         <div class="col-md-4">
             {{form.vis_id}}
+            {{form.vis_id.errors}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label" style="color:orange;">Visitor Name</label>
+        <div class="col-md-4">
+            {{form.vis_name}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label" style="color:orange;">Visitor Email</label>
+        <div class="col-md-4">
+            {{form.vis_email}}
+            {{form.vis_email.errors}}
         </div>
     </div>
     <div class="form-group">
@@ -18,9 +32,15 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-2 control-label form-control-file" style="color:orange;">Browse</label>
+        <label class="col-md-2 control-label form-control-file" style="color:orange;">Browse Image</label>
         <div class="col-md-4">
             {{form.vis_photo_path}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label form-control-file" style="color:orange;">Browse File</label>
+        <div class="col-md-4">
+            {{form.vis_photo_file}}
         </div>
     </div>
         <button type="submit" class="btn btn-primary" style="margin-left: 190px; margin-top: 20px;">Submit</button>
