@@ -31,9 +31,12 @@ class Employees(models.Model):
 
 class Visitors(models.Model):
     vis_id = models.CharField(max_length=50, primary_key=True)
+    vis_name = models.CharField(max_length=50, default=None, null=True)
+    vis_email = models.EmailField(max_length=100, null=True, default=None)
     vis_type = models.CharField(max_length=50)
     vis_feature_vector = models.CharField(max_length=200)
     vis_photo_path = models.ImageField(upload_to='visitors/', null=True, blank=True)
+    vis_photo_file = models.FileField(upload_to='Visitors/', default=None, null=True)
 
     class Meta:
         db_table = "visitors"
