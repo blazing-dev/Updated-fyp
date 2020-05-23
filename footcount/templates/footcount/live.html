@@ -1,0 +1,48 @@
+{% extends 'footcount/basic.html' %}
+{% block title%}Dashboard |Live{% endblock %}
+{% block body %}
+<meta property="og:image" content="https://varvy.com/pagespeed/images/base64-image.png">
+
+
+
+<!-- <script>
+
+</script> -->
+
+<section class="ch">
+    <center><h1 style="color: white;">Header</h1></center>
+    <center><h1 style="color: white;"></h1></center>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="ch-container">
+<!--            <img style="width: 440; height: 320" src="data:image/png;base64,{{img}}" />-->
+            <img src="{% url 'liveEntry' stream_path='video' %} "height="325" width="440" class="box1"/>
+<!--            <img style="width: 440; height: 320" src="key" />-->
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="ch-container">
+            <img src="{% url 'liveExit' stream_path1='video1' %} "height="325" width="440" class="box1"/>
+<!--           <video id="video" width="440" height="320" autoplay controls>-->
+<!--               <canvas id="canvas" width="440" height="320"></canvas>-->
+               Your browser does not support the video tag.
+           </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--<script type="text/javascript">-->
+<!--  setInterval("my_function();",1000); -->
+<!-- -->
+<!--    function my_function(){-->
+<!--        window.location = location.href;-->
+<!--    }-->
+<!--</script>-->
+
+
+
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends 'footcount/basic.html' %}
+{% block title%}Dashboard |Register Employee{% endblock %}
+{% block body %}
+{% load static %}
+<center><h1 class="header">Employee Registration</h1></center>
+<link rel="stylesheet" href="{% static 'footcount/empfrm.css' %}">
+<form method="post" enctype="multipart/form-data"> {%csrf_token%}
+<!--  {{form}}-->
+          <h5 class="colr">Employee Id</h5>-->
+          {{form.emp_id}}
+          <h5 class="colr">Employee Name</h5>
+          {{form.emp_name}}
+          <h5 class="colr">Employee Mobile Number</h5>
+          {{form.emp_mobile}}
+          <h5 class="colr">Employee Address</h5>
+          {{form.emp_address}}
+          <h5 class="colr">Employee Desigination</h5>
+          {{form.emp_designation}}
+          <h5 class="colr">Employee Picture</h5>
+          {{form.emp_photo_path}}
+    <input type="submit" value="Submit Query">
+</form>
+
+<style>
+  .colr {
+    color: orange;
+  }
+  .header{
+  color: orange;
+  }
+</style>
+
+<script>
+    var formAnimator = {
+  
+  init: function() {
+    this.form = document.querySelector('form');
+  	this.button = document.querySelector('button');
+    this.path = document.querySelector('path');
+    this.createPath();
+    this.form.addEventListener('submit', this.animate, false);
+    window.addEventListener('resize', this.createPath);
+  },
+  
+  createPath: function() {
+    console.log('creating path');
+    var that = formAnimator;
+  	that.dPath = 'M' + (that.button.offsetLeft + that.button.offsetWidth) + ' ' + that.form.offsetHeight + ' H' + that.form.offsetWidth + ' V0 H0 V' + that.form.offsetHeight + ' H' + that.button.offsetLeft;
+  	console.log(that.dPath);
+    that.path.setAttribute('d', that.dPath);
+	},
+  
+  animate: function(e) {
+    var that = formAnimator;
+  	e.preventDefault();
+    that.path.classList.add('animate');
+    that.path.classList.remove('hidden');
+    that.button.classList.add('valid');
+    that.path.addEventListener('webkitAnimationEnd', function() {
+      this.classList.remove('animate');
+      this.classList.add('hidden');
+      that.button.classList.remove('valid');
+    }, false);
+	}
+  
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+  
+  formAnimator.init();
+  
+}, false);  
+</script>
+{% endblock %}
+<!--<div class="container">-->
+<!--        <form method="POST">  {% csrf_token %}-->
+<!--          <h3 style="font-family: calibri; color: orange;">Employee Registration Form</h3>-->
+<!--          <svg width="100%" height="100%">-->
+<!--            <path class="hidden" d="M0 0 H200 V200 H0 Z"></path>-->
+<!--          </svg>-->
+<!--          <h5 class="colr">Employee Id</h5>-->
+<!--          {{form.emp_id}}-->
+<!--          <h5 class="colr">Employee Name</h5>-->
+<!--          {{form.emp_name}}-->
+<!--          <h5 class="colr">Employee Mobile Number</h5>-->
+<!--          {{form.emp_mobile}}-->
+<!--          <h5 class="colr">Employee Address</h5>-->
+<!--          {{form.emp_address}}-->
+<!--          <h5 class="colr">Employee Desigination</h5>-->
+<!--          {{form.emp_designation}}-->
+<!--          <h5 class="colr">Employee Picture</h5>-->
+<!--          {{form.emp_photo_path}}-->
+
+<!--          <input type="submit" value="Send">-->
+<!--        </form>-->
+<!--</div>-->

@@ -1,0 +1,64 @@
+{% extends 'footcount/basic.html' %}
+{% block title%}Dashboard |Footcount{% endblock %}
+{% block body %}
+<center><h1 style="color: white;">Congestion Hours</h1></center>
+<p style="color: orange; text-align: center; font-size: 25px;"><i>CONGESTION HOURS DATEWISE (Daily)</i></p>
+<!--<form action="/congestion_hours" method="POST">{% csrf_token %}-->
+<!--  <input name="q" type="text" placeholder="Search...">-->
+<!--  <input type="submit">-->
+<!--</form>-->
+<!--<center>-->
+<!--  <table class="tbl" border="1">-->
+<!--    <th class="header">ID</th><th class="header">TYPE</th><th class="header">PHOTO</th><th class="header">FEATURE</th><th class="header">TIME IN</th><th class="header">TIME OUT</th>-->
+<!--    {% for iter in object_list %}-->
+<!--    <tr class="table_rows">-->
+<!--      <td>{{iter.log_visitor_id}}</td>-->
+<!--      <td>{{iter.vis_type}}</td>-->
+<!--      <td>-->
+<!--        <img src='/media/{{iter.vis_photo_path}}/' class='image-fluid' style="width: 60px; height: 60px;">-->
+<!--      </td>-->
+<!--      <td>{{iter.vis_feature_vector}}</td>-->
+<!--      <td>{{iter.log_time_in}}</td>-->
+<!--      <td>{{iter.log_time_out}}</td>-->
+<!--    </tr>-->
+<!--    {% endfor %}-->
+<!--  </table>-->
+<!--</center>-->
+  <center>
+      <table class="tbl" border="1">
+          <th class="header">Highest Flow Of Traffic Time</th><th class="header">Date</th><th class="header">Day</th>
+          {% for string, date, day in result %}
+          <tr class="table_rows">
+            <td>{{string}}</td>
+            <td>{{date}}</td>
+            <td>{{day}}</td>
+          </tr>>
+          {% endfor %}
+        </table>
+      <p style="color: orange; text-align: center; font-size: 25px;"><i>WEEKLY CONGESTION HOURS</i></p>
+      <center><p style="color: #FFF"><i><u>(1 Week = 2 days)</u></i></p></center>
+      <center><p style="color: #FFF"><i><u>(if Highest Count > 10 then <span style="color: red;">alert</span>)</u></i></p></center>
+      <table class="tbl" style="margin-bottom: 3%;" border="1">
+          <th class="header">Highest Count</th><th class="header">Date</th><th class="header">Day</th><th class="header">Highest Flow Of Traffic Time</th>
+          {% for hc, date, day, txt in maximum %}
+          <tr class="table_rows">
+          {% if hc > 10 %}
+            <td>         
+                <span >{{hc}}<span style="margin-bottom: 5%;" class="label	label-danger	label-xs"><i>!</i></span></span>             
+            </td>
+          {% else %}
+            <td>{{hc}}</td>
+          {% endif %}
+            <td>{{date}}</td>
+            <td>{{day}}</td>
+            <td>{{txt}}</td>
+          </tr>>
+          {% endfor %}
+        </table>
+  </center>
+<style>
+    .res{
+    color: #FFFFFF;
+    }
+</style>
+{% endblock %}

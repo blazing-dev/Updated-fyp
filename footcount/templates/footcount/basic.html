@@ -1,0 +1,86 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'footcount/style.css' %}">
+    <script src="{% static 'footcount/video.js' %}"></script>
+  </head>
+  <body>
+    <aside class="side-nav" id="show-side-navigation1">
+      <i class="fa fa-bars close-aside hidden-sm hidden-md hidden-lg" data-close="show-side-navigation1"></i>
+      <div class="heading">
+        <img src="{% static 'footcount/Security_Admin-01-512.png' %}" alt="">
+        <div class="info">
+          <h3><a href="#">VCIS Admin</a></h3>
+        </div>
+      </div>
+      <div class="search">
+        <input type="text" placeholder="Type here"><i class="fa fa-search"></i>
+      </div>
+      <ul class="categories">
+        <li><i class="fa fa-home fa-fw"></i><a href="/home"> Home</a></li> 
+        <li><i class="fa fa-eye fa-fw"></i><a id='live' href="/live_stream">Live View</a></li>
+        <li><i class="fa fa-group"></i></i><a href="/counting">Foot Count</a></li>
+        <li><i class="fa fa-line-chart"></i><a href="/forecast"> Forecasting</a></li>
+        <li><i class="fa fa-address-card"></i><a href="/employee_reg"> Employee Registration</a></li>
+        <li><i class="fa fa-address-card"></i><a href="/visitors_reg"> Visitors Registration</a></li>
+        <li><i class="fa fa-hourglass-half"></i><a href="/congestion_hours"> Congestion Hours</a></li>
+        <li><i class="fa fa-hourglass-half"></i><a href="/classification"> Classification </a></li>
+        <li><i class="fa fa-hourglass-half"></i><a href="/time_spent"> Time spent </a></li>
+
+        <!-- <li><i class="fa fa-bolt fa-fw"></i><a href="#"> Testimonials</a></li> -->
+      </ul>
+    </aside>
+    <section id="contents">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <i class="fa fa-align-right"></i>
+            </button>
+            <a class="navbar-brand" href="#">Admin<span class="main-color">VCIS</span></a>
+          </div>
+          <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+          {% block login %}{% endblock %}
+          </div>
+        </div>
+      </nav>
+      {% block body %}{% endblock %}
+      
+
+
+
+     <script>
+  $(document).ready(function(){
+    $("#live").click(function(){
+  $.ajax({
+    url:"http://192.168.8.101:8080/shot.jpg",
+    data:{data:"data"},
+    success:function(result){
+       //result retrieval queries
+       //and
+       setTimeout(getAjaxRequest,1000); //call the same function every 1s.
+    },
+    error:function(err){
+       //error handler
+    }
+  });
+    }
+  }
+</script>
+        
+
+
+
+      </section>
+      <script src='http://code.jquery.com/jquery-latest.js'></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>
+      <script src='js/main.js'></script>
+      
+      </body>
+    </html>

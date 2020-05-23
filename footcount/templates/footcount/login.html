@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'footcount/style1.css' %}">
+  </head>
+  <body>
+
+  <main class="container my-5">
+  <div class="row">
+    <section class="col-md-6 my-5 offset-md-3">
+
+      <div class="card shadow p-5">
+        <form action="/analyze" method="POST">{% csrf_token %}
+
+          <h3 class="text-center text-uppercase mb-4">Login Dashboard</h3>
+          <hr>
+
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" name="usr_name" id="exampleInputEmail1" placeholder="Enter Username">
+          </div>
+
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" name="pass" id="exampleInputPassword1" placeholder="Enter Password">
+          </div>
+
+          <button class="btn btn-block btn-secondary rounded-pill mt-3">Login</button>
+
+          <p class="mt-3 text-white">© Copyright 2020 - VCIS. All rights reserved.</p>
+
+        </form>
+      </div>
+    </section>
+  </div>
+</main>
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

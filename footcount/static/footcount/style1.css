@@ -1,0 +1,58 @@
+main .card {
+  background-color: #3475;
+}
+
+body {
+  background: #fe8c00; 
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    /* #f83600, */
+    /* #fe8c00 */
+    #2a2b3d,red
+  );
+   /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    /* #f83600, */
+    /* #fe8c00 */
+    #2a2b3d,red
+  );
+   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  color: white;
+  /* background-color: #2a2b3d; */
+}
+
+h3 {
+  font-family: Times New Roman;
+  font-weight: bold;
+}
+hr {
+  border-bottom: solid white 1px;
+}
+
+.btn {
+  background: #0f2027; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+input {
+  background-color: #3475 !important;
+  color: white !important;
+}
+
+::placeholder {
+  color: white !important;
+}

@@ -1,0 +1,61 @@
+{% extends 'footcount/basic.html' %}
+{% block title%}Dashboard |Footcount{% endblock %}
+{% block body %}
+<nav class="navbar navbar-expand-lg"> 
+    <a class="navbar-brand" href="/time_spent" style="color: white; font-size: xx-large; margin-top: 20px;">Time Spent</a>
+    <form class="form-inline my-2 my-lg-0" style="margin-top: 25px; margin-right: 20px; text-align: right;" method="post" action="time_spent">
+    {% csrf_token %}
+        <input class="form-control mr-sm-2" type="search" name="srch" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="color: orange;">Search</button>
+    </form>
+</nav>
+<div>
+    {% if messages %}
+        <ul class="message">
+            {% for k in messages %}
+                <li style="color: red; text-align-last: right; margin-right: 150px;">{{ k }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div><br>
+<center><img src="media/bar.png" height="900" width="700" class="box1 image-fluid ml-2" style="margin-top: 20px; margin-bottom: 40px;"></center>
+<center>
+    <div id="table">    
+    {% if sr %}
+        <table class="tbl" border="1">
+            <th class="header">Visitor ID</th><th class="header">Visitor Type</th><th class="header">Photo</th><th class="header">Check-In</th><th class="header">Check-Out</th><th class="header">Time Spent</th>
+        {% for k,j in sr %}
+        {% for k2 in sr2 %}
+        <tr class="table_rows">
+            <td>{{ k.log_visitor_id}}</td>
+            <td>{{ k2.vis_type }}</td>
+            <td><img src="media/{{ k2.vis_photo_path }}" height="60px" width="60px"></td>
+            <td>{{ k.log_time_in }}</td>
+            <td>{{ k.log_time_out }}</td>
+            <td>{{j}}</td>
+        </tr>
+        {% endfor %}
+        {% endfor %}
+        {% endif %}
+    </table>
+</div>
+</center>
+<center>
+    {% if visitors_time %}
+    <table class="tbl" border="1">
+    <th class="header">Visitor ID</th><th class="header">Visitor Type</th><th class="header">Photo</th><th class="header">Check-In</th><th class="header">Check-Out</th><th class="header">Time Spent</th> 
+    
+    {% for i,k in visitors_time %}
+    <tr class="table_rows">
+        <td>{{i.log_visitor_id}}</td>
+        <td>{{i.vis_type}}</td>
+        <td><img src="media/{{ i.vis_photo_path }}" height="60px" width="60px"></td>
+        <td>{{i.log_time_in}}</td>
+        <td>{{i.log_time_out}}</td>
+        <td>{{k}}</td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+</table>
+</center>
+{% endblock %}

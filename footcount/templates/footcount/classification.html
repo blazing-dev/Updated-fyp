@@ -1,0 +1,59 @@
+{% extends 'footcount/basic.html' %}
+{% block title%}Dashboard |Footcount{% endblock %}
+{% block body %}
+<center><h1 style="color: white;">Visitors' Classification</h1></center>
+<center><img src="media/pie.png" height="900" width="700" class="box1 image-fluid ml-2" style="margin-top: 40px; margin-bottom: 20px;"></center>
+
+<section class='statis text-center' style="margin-top:50px ;">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="box bg-primary">
+            <i class="fa fa-male"></i>
+            <h3>{{new_vis}}</h3>
+            <p class="lead">New Visitors</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="box warning">
+            <i class="fa fa-male"></i>
+            <h3>{{frequent_vis}}</h3>
+            <p class="lead">Frequent Visitors</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="box success">
+            <i class="fa fa-male"></i>
+            <h3>{{old_vis}}</h3>
+            <p class="lead">Old Visitors</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+            <div class="box danger">
+                <i class="">!</i>
+              <h3>{{suspicious}}</h3>
+              <p class="lead">Alert</p>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- <img src="media/pie.png" height="500" width="650" class="box1 image-fluid ml-2" style="margin-top: 40px; margin-bottom: 40px;"> -->
+<script>
+    function fetchdata(){
+ $.ajax({
+  url: 'views.py',
+  type: 'post',
+  success: function(response){
+   // Perform operation on the return value
+   alert(response);
+  }
+ });
+}
+
+$(document).ready(function(){
+ setInterval(fetchdata,5000);
+});
+</script>
+{% endblock %}
